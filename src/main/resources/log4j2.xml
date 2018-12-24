@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error">
+  <Appenders>
+    <JDBC name="databaseAppender" tableName="LOGS">
+      <ConnectionFactory class="com.logging.aek.config" method="getDatabaseConnection" />
+      <Column name="event_id" literal="nextval('logs_event_id_seq')" isUnicode="false" />
+      <Column name="event_date" isEventTimestamp="true" />
+      <Column name="level" pattern="%level" isUnicode="false"/>
+      <Column name="logger" pattern="%logger" isUnicode="false"/>
+      <Column name="message" pattern="%message" isUnicode="false"/>
+      <Column name="throwable" pattern="%ex{full}" isUnicode="false"/>
+    </JDBC>
+  </Appenders>
+  <Loggers>
+    <Root level="error">
+      <AppenderRef ref="databaseAppender"/>
+    </Root> 
+  </Loggers> 
+</Configuration>
