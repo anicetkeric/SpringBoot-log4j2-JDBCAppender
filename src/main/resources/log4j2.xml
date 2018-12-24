@@ -2,7 +2,7 @@
 <Configuration status="error">
   <Appenders>
     <JDBC name="databaseAppender" tableName="LOGS">
-      <ConnectionFactory class="com.logging.aek.config" method="getDatabaseConnection" />
+      <ConnectionFactory class="com.logging.aek.config.ConnectionFactory" method="getDatabaseConnection" />
       <Column name="event_id" literal="nextval('logs_event_id_seq')" isUnicode="false" />
       <Column name="event_date" isEventTimestamp="true" />
       <Column name="level" pattern="%level" isUnicode="false"/>
